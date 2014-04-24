@@ -20,12 +20,6 @@ let rec append l x =
 
 append [1;2;3] 9
 
-//вариант 2(изи)
-let append1 l x = l @ [x]
-
-append1 [1;2;3] 9
-
-
 //развернуть список
 let rec reverse l =
     match l with
