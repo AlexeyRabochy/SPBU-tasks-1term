@@ -9,7 +9,7 @@ let rec sum n =
 let rec factor n =
     match n with
     |0 -> 1I
-    |_ -> bigint(n) * factor (n - 1)
+    |_ -> bigint(n) * factor (n - 1) 
 
 sum(factor 100)
 

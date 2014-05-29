@@ -8,8 +8,8 @@ let solve a b c =
     if dis < 0.0 then
         failwith "no roots"
     else
-        (-b - sqrt dis) / (2.0 * a), (-b + sqrt dis) / (2.0 * a)
-
+        (-b - sqrt dis) / (2.0 * a), (-b + sqrt dis) / (2.0 * a) 
+        
 solve 1.0 2.0 3.0
 
 //добавление в конец
