@@ -40,8 +40,9 @@ let rec convertToLine (source: LineElement list) (width: int) : Line list =
 // добавляет столько пробелов в конец, что Line занимает в длину места, сколько задано в максимальной ширине
 let rec addSpaceInEnd (source: LineElement list) (width: int) : LineElement list =
     match source with
-    | Word(w, length)::[] -> Word(w, length)::Space(width-length)::[]
-    | Space(length)::[] -> Space(width+length)::[]
+    | Word(w, length)::[] -> if width > length then Word(w, length)::Space(width-length)::[]
+                             else Word(w, length)::[]
+    | Space(length)::[] -> Space(width)::[]
     | Word(w, length)::tl -> Word(w, length)::(addSpaceInEnd (tl) (width-length))
     | Space(length)::tl -> Space(length)::(addSpaceInEnd tl (width-length))
     | [] -> []
@@ -161,6 +162,7 @@ let test = List.map convertToWord input
 
 let ans = convertToLine test 11
 let ans2 = format ans 11 Width
+
 
 printLineList ans2
 Console.ReadKey()

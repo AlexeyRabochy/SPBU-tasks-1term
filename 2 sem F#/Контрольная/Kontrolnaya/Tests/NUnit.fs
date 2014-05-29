@@ -27,31 +27,31 @@ module Test =
     [<Test>]
     let TestLeftFormat () = 
         let input = convertToLine(List.map convertToWord ["hello"; "world"; "hacker"; "green"; "army";"I"; "ya"; "u"; "mami"; "programmist" ]) 11
-        let ans = [Line [Word ("hello",5); Space 1; Word ("world",5); Space 0];
-                   Line [Word ("hacker",6); Space 6];
-                   Line [Word ("green",5); Space 1; Word ("army",4); Space 2];
-                   Line [Word ("I",1); Space 1; Word ("ya",2); Space 1; Word ("u",1); Space 1; Word ("mami",4); Space 0];
-                   Line [Word ("programmist",11); Space 0]]
+        let ans = [Line [Word ("hello",5); Space 1; Word ("world",5)];
+                   Line [Word ("hacker",6); Space 5];
+                   Line [Word ("green",5); Space 1; Word ("army",4); Space 1];
+                   Line [Word ("I",1); Space 1; Word ("ya",2); Space 1; Word ("u",1); Space 1; Word ("mami",4)]; 
+                   Line [Word ("programmist",11)]]
         Assert.AreEqual((format input 11 Left), ans)
 
     [<Test>]
     let TestRightFormat () =
         let input = convertToLine(List.map convertToWord ["hello"; "world"; "hacker"; "green"; "army";"I"; "ya"; "u"; "mami"; "programmist" ]) 11
-        let ans = [Line [Space 0; Word ("hello",5); Space 1; Word ("world",5)];
+        let ans = [Line [Word ("hello",5); Space 1; Word ("world",5)];
                    Line [Space 5; Word ("hacker",6)];
                    Line [Space 1; Word ("green",5); Space 1; Word ("army",4)];
-                   Line [Space 0; Word ("I",1); Space 1; Word ("ya",2); Space 1; Word ("u",1); Space 1; Word ("mami",4)];
-                   Line [Space 0; Word ("programmist",11)]] 
+                   Line [Word ("I",1); Space 1; Word ("ya",2); Space 1; Word ("u",1); Space 1; Word ("mami",4)];
+                   Line [Word ("programmist",11)]]
         Assert.AreEqual((format input 11 Right), ans)
 
     [<Test>]
     let TestCenterFormat () =
         let input = convertToLine(List.map convertToWord ["hello"; "world"; "hacker"; "green"; "army";"I"; "ya"; "u"; "mami"; "programmist" ]) 11
-        let ans = [Line [Space 0; Word ("hello",5); Space 1; Word ("world",5); Space 0];
+        let ans = [Line [Space 0; Word ("hello",5); Space 1; Word ("world",5)];
                    Line [Space 2; Word ("hacker",6); Space 3];
                    Line [Space 0; Word ("green",5); Space 1; Word ("army",4); Space 1];
-                   Line [Space 0; Word ("I",1); Space 1; Word ("ya",2); Space 1; Word ("u",1); Space 1; Word ("mami",4); Space 0];
-                   Line [Space 0; Word ("programmist",11); Space 0]]
+                   Line [Space 0; Word ("I",1); Space 1; Word ("ya",2); Space 1; Word ("u",1); Space 1; Word ("mami",4)];
+                   Line [Space 0; Word ("programmist",11)]]
         Assert.AreEqual((format input 11 Center), ans)
 
     [<Test>]
